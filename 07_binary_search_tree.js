@@ -1,3 +1,8 @@
+// O(n) Space
+
+// O(log(n)) insert
+// O(log(n)) lookup
+
 class Node {
   constructor(value) {
     this.value = value;
