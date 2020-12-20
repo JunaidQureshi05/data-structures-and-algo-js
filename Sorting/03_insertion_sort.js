@@ -1,7 +1,7 @@
 // O(1) Space
 // O(n^2) Time
 
-function selectionSort(array) {
+function insertionSort(array) {
   for (i = 1; i < array.length; i++) {
     let j = i;
     while (j > 0 && array[j - 1] > array[j]) {
@@ -18,4 +18,4 @@ function swap(array, i, j) {
   array[j] = temp;
 }
 
-console.log(selectionSort([5, 4, 3, 2, 1]));
+console.log(insertionSort([5, 4, 3, 2, 1]));
