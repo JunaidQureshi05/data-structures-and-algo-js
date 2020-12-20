@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b9f9103d-3b6a-41a6-b91c-09383da74e22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/01_array.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_hash_table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_linked_list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/04_stack_using_array.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_stack_using_linked_list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/06_queue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_binary_search_tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08_graph.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1luSdzZJWqh24uM7xRnPQLSVjQS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9f9103d-3b6a-41a6-b91c-09383da74e22" name="Default Changelist" comment="" />
+      <created>1608445621886</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608445621886</updated>
+    </task>
+    <servers />
+  </component>
+</project>
