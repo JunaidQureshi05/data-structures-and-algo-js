@@ -54,6 +54,5 @@ class Stack {
 let list = new Stack();
 list.push(1);
 list.push(2);
-list.push("Hadiya");
 console.log(list.peek());
 console.log(list);
