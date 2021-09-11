@@ -7,7 +7,7 @@ class Node {
 }
 
 class BST {
-  constructor(value) {
+  constructor() {
     this.root = null;
   }
 
@@ -16,48 +16,43 @@ class BST {
     if (!this.root) {
       this.root = node;
     } else {
-      let currentNode = this.root;
-
+      let current_node = this.root;
       while (true) {
-        if (currentNode.value > value) {
-          if (!currentNode.left) {
-            currentNode.left = node;
+        if (current_node.value > value) {
+          if (!current_node.left) {
+            current_node.left = node;
             return;
           }
-          currentNode = currentNode.left;
-        } else if (currentNode.value < value) {
-          if (!currentNode.right) {
-            currentNode.right = node;
+          current_node = current_node.left;
+        } else if (current_node.value < value) {
+          if (!current_node.right) {
+            current_node.right = node;
             return;
           }
-          currentNode = currentNode.right;
+          current_node = current_node.right;
         } else {
-          console.log("No duplication allowed");
+          console.log('Duplication is not allowed');
           return;
         }
       }
     }
   }
-
   lookup(value) {
+    let current_node = this.root;
     if (!this.root) {
       return false;
-    } else {
-      let currentNode = this.root;
-
-      while (currentNode != null) {
-        if (currentNode.value > value) {
-          currentNode = currentNode.left;
-        } else if (currentNode.value < value) {
-          currentNode = currentNode.right;
-        } else {
-          return true;
-        }
-      }
-      return false;
     }
+    while (current_node != null) {
+      if (current_node.value > value) {
+        current_node = current_node.left;
+      } else if (current_node.value < value) {
+        current_node = current_node.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
   }
-
   inorder(node, list) {
     if (node.left) {
       this.inorder(node.left, list);
@@ -68,6 +63,7 @@ class BST {
     }
     return list;
   }
+
   preorder(node, list) {
     list.push(node.value);
     if (node.left) {
@@ -83,6 +79,7 @@ class BST {
     if (node.left) {
       this.postorder(node.left, list);
     }
+
     if (node.right) {
       this.postorder(node.right, list);
     }
@@ -103,6 +100,5 @@ my_tree.insert(50);
 my_tree.insert(3);
 my_tree.insert(15);
 my_tree.insert(30);
-console.log(my_tree.inorder(my_tree.root, []));
-console.log(my_tree.preorder(my_tree.root, []));
+console.log(my_tree);
 console.log(my_tree.postorder(my_tree.root, []));

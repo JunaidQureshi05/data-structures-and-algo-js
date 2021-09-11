@@ -1,9 +1,8 @@
 // O(n) Space
 
-// Time complexity
-// O(1) push
-// O(1) pop
-// O(1) peek
+// O(1) Push
+// O(1) Pop
+// O(1) Peek
 
 class Node {
   constructor(value) {
@@ -11,13 +10,13 @@ class Node {
     this.next = null;
   }
 }
+
 class Stack {
   constructor() {
     this.top = null;
     this.bottom = null;
     this.length = 0;
   }
-
   push(value) {
     let node = new Node(value);
     if (!this.top) {
@@ -36,23 +35,25 @@ class Stack {
       if (this.top == this.bottom) {
         this.bottom = null;
       }
-      let deletedItem = this.top.value;
+      let deleted_item = this.top.value;
       this.top = this.top.next;
       this.length--;
-      return deletedItem;
+      return deleted_item;
     }
   }
-
   peek() {
-    if (this.length === 0) {
-      return;
-    } else {
-      return this.top.value;
-    }
+    return this.top.value;
   }
 }
-let list = new Stack();
-list.push(1);
-list.push(2);
-console.log(list.peek());
-console.log(list);
+
+let stack = new Stack();
+stack.push(1);
+stack.push(2);
+stack.push(3);
+stack.push(4);
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.top);
