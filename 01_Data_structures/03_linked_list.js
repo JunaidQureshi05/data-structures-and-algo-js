@@ -1,96 +1,140 @@
-// class for creating nodes
+// Write a program to implement linked list data structure with the following functionalities
+
+// 1 - add [x]
+// 2 - addAt [x]
+// 3 - removeAt [x]
+// 4 - display a-->b-->c [x]
+// 5  - reverse [x]
+// 6  - getLength [x]
+// 7  - addFirst [x]
+//  8 - addLast [x]
+
+// O(n)  Space
+// O(1)  Add
+//  O(1) Remove
+//  O(n) Lookup
 
 class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
+    constructor(value){
+        this.value  = value;
+        this.next = null;
+    }
 }
 
-// class for creating linked list
-// O(n) Space
-// O(n) Search;
-// O(1) Insertion;
-// O(1) Deletion;
 class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-  //   O(1) Time
-  append(value) {
-    let node = new Node(value);
-    if (!this.head) {
-      this.head = node;
-      this.tail = this.head;
-    } else {
-      this.tail.next = node;
-      this.tail = node;
+    constructor(){
+        this.head = null;
+        this.tail =  null;
+        this.length = 0;
     }
-    this.length++;
-  }
-  //   O(1) Time
-  prepend(value) {
-    let node = new Node(value);
-    node.next = this.head;
-    this.head = node;
-    this.length++;
-  }
-  traverse_to_index(idx) {
-    let counter = 0;
-    let current_node = this.head;
-    while (counter != idx) {
-      current_node = current_node.next;
-      counter++;
+    add(value){
+        let node = new Node(value);
+        if(this.length==0){
+            this.head = this.tail = node;
+        }
+        else{
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.length++;
     }
-    return current_node;
-  }
 
-  insert(element, idx) {
-    if (idx < 0 || idx > this.length) {
-      console.log('Check index!!!');
-    } else if (idx === 0) {
-      this.prepend(value);
-    } else {
-      let node = new Node(element);
-      let leader = this.traverse_to_index(idx - 1);
-      let treller = leader.next;
-      node.next = treller;
-      leader.next = node;
-      this.length++;
+    addFirst(value){
+        let node = new Node(value);
+        node.next = this.head;
+        this.head = node;
+        this.length++;
     }
-  }
-  remove(idx) {
-    if (idx < 0 || idx > this.length) {
-      console.log('Check index!!!');
-    } else if (idx === 0) {
-      this.head = this.head.next;
-      this.length--;
-    } else {
-      let leader = this.traverse_to_index(idx - 1);
-      leader.next = leader.next.next;
-      this.length--;
+    addLast(value){
+        let node = new Node(value);
+        this.tail.next = node;
+        this.tail = node
+        this.length++
     }
-  }
-
-  print() {
-    let nodes = [];
-    let current_node = this.head;
-    while (current_node) {
-      nodes.push(current_node.value);
-      current_node = current_node.next;
+    addAt(idx,value) {
+        let node = new Node(value);
+        if(idx<0 || idx> this.length){
+            console.log('Please enter a valid index')
+            return 
+        }
+        else if(idx==0){
+            this.addFirst(value)
+        }
+        else if(idx==this.length){
+            this.addLast(value)
+        }
+        else{
+            let current_node = this.head
+            for(let i=0;i<idx-1;i++){
+               current_node = current_node.next; 
+            }
+            let trailing  = current_node.next;
+            node.next = trailing
+            current_node.next = node;
+            this.length++;
+        }
     }
-    return nodes;
-  }
+    removeAt(idx){
+        if(this.length===0){
+            console.log('Linked List is empty')
+            return
+        }
+        if(idx<0 || idx>=this.length){
+            console.log("Enter a valid idx")
+            return
+        }
+        if(this.length===1){
+            this.head=this.tail=null
+        }
+        else if(idx==0){
+            this.head= this.head.next;
+        }
+        else{
+            let current_node = this.head
+            for(let i=0;i<idx-1;i++){
+                current_node = current_node.next
+            }
+            current_node.next = current_node.next.next;
+        }
+        this.length--;
+        
+    }
+    reverse(){
+        let current_node = this.head;
+        let prev = null;
+        while(current_node){
+            let next = current_node.next;
+            current_node.next = prev;
+            prev =current_node
+            current_node = next
+        }
+        [this.head,this.tail] = [this.tail,this.head]
+    }
+    display(){
+        let current_node = this.head;
+        let elements =[]
+        while(current_node){
+            elements.push(current_node.value)
+            current_node = current_node.next
+        }
+        console.log(elements.join(' --> '))
+    }
+    getLength(){
+        console.log(this.length)
+        return this.length
+    }
 }
 
-let list = new LinkedList();
-list.append(1);
-list.append(2);
-list.prepend('Junaid');
-list.prepend('Hamza');
-list.insert('Qureshi', 2);
-list.insert(100, 1);
-list.remove(0);
-console.log(list.print());
+
+let myList = new LinkedList();
+myList.add(1)
+myList.add(2)
+myList.add(3)
+myList.add(4)
+myList.add(5)
+myList.add(6)
+myList.addAt(4,'Junaid')
+myList.reverse()
+myList.display()
+myList.getLength()
+console.log(myList)
