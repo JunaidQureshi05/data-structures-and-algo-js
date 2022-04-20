@@ -1,79 +1,119 @@
-// O(n) Space
 
-class Array {
-  constructor() {
-    this.data = {};
-    this.length = 0;
-  }
-  //   O(1) Time
-  push(element) {
-    this.data[this.length] = element;
-    this.length += 1;
-    return [this.data, this.length];
-  }
+// 1 -  push [x]
+// 2 -  pop  [x]
+// 3 -  shift [x]
+// 4 -  unshift [x]
+// 5 -  Add at  [x]
+// 6 -  Remove at [x]
+// 7 -  Get at [x]
 
-  //   O(1) Time
-  pop() {
-    if (this.length === 0) {
-      return 'Empty List';
-    } else {
-      let deletedElement = this.data[this.length];
-      delete this.data[this.length];
-      this.length--;
-      return deletedElement;
+// O(n) Time
+// O(1) access
+// O(n) Insertion
+// O(n) Deletion
+// O(1) Push
+// O(1) Pop
+// O(1) Access
+
+class Array{
+    constructor(){
+        this.data = {}
+        this.length=0;
     }
-  }
-
-  //   O(n) Time
-  insert(element, idx) {
-    if (idx < 0 || idx > this.length) {
-      return 'Enter a valid index!';
-    } else if (idx == this.length) {
-      this.push(element);
-    } else {
-      for (let i = this.length - 1; i >= idx; i--) {
-        this.data[i + 1] = this.data[i];
+    push(value){
+        this.data[this.length] = value;
+        this.length++;
+    }
+    pop(){
+        if(this.length==0){
+            console.log('Array is empty');
+            return null
+        }
+        let poppedElement = this.data[this.length-1];
+        delete this.data[this.length-1];
+        this.length--
+        return poppedElement
+    }
+    shift(){
+        if(this.length===0){
+            console.log('Array is empty')
+            return null;
+        }
+        let element = this.data[0]
+        for(let i=0;i<this.length;i++){
+            this.data[i] = this.data[i+1]
+        }
+        delete this.data[this.length-1];
+        this.length--;
+        return element
+    }
+   unshift(value){
+       for(let i=this.length-1;i>=0;i--){
+           this.data[i+1] = this.data[i]
+       }
+       this.data[0]= value
+       this.length++
+   }
+  addAt(idx,value){
+      if(idx<0 || idx>this.length){
+          console.log('Please enter a valid index');
+          return 
       }
-      this.data[idx] = element;
-      return this.data;
-    }
-  }
-
-  //   O(n) Time
-  delete(idx) {
-    if (this.length === 0) {
-      return;
-    } else if (idx > this.length || idx < 0) {
-      return 'Enter a valid index';
-    } else if (idx === this.length - 1) {
-      this.pop();
-    } else {
-      let deletedElement = this.data[idx];
-      for (let i = idx; i < this.length - 1; i++) {
-        this.data[i] = this.data[i + 1];
+      else if (idx==0){
+          this.unshift(value);
       }
-      delete this.data[this.length - 1];
-      this.length--;
-      return deletedElement;
-    }
+      else if(idx==this.length){
+          this.push(value)
+      }
+      else{
+          const {data,length} = this
+          for(let i=length-1;i>=idx;i--){
+             data[i+1] = data[i]
+          }
+          data[idx] = value;
+          this.length++;
+      }
   }
+    removeAt(idx){
+        let {data,length} = this;
+        if(idx<0 || idx >= length){
+            console.log('Please enter a valid idx')
+            return null
+        }
+        else if(idx===0){
+            let element = data[0]
+            this.shift();
+            return element;
+        }
+        else if(idx===length-1){
+            return this.pop()
+        }
+        else{
+            let element = data[idx]
+            for(let i=idx;i<this.length-1;i++){
+                this.data[i] = this.data[i+1]
+            }
+            delete data[length-1]
+            this.length--;
+            return element
+        }
+    }
+    getAt(idx){
+       let {data,length} = this
+        if(idx<0  || idx>=length){
+            console.log('Index out of range')
+            return null
+        }
+        return data[idx];
+    }
 }
 
-var list = new Array();
+     
 
-for (let i = 1; i <= 10; i++) {
-  if (i != 3) {
-    list.push(i);
-  }
-}
-
-console.log(list.data);
-
-list.insert(3, 2);
-console.log(list.data);
-
-list.pop();
-console.log(list.data);
-
-list.delete(5);
-console.log(list.data);
+let list = new Array()
+list.push('a')
+list.push('b')
+list.push('c')
+list.push('d')
+console.log(list.getAt(4))
+console.log(list)
